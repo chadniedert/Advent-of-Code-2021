@@ -34,7 +34,7 @@ class Main {
 		}
 		long start = System.nanoTime();
 
-		// my code<<
+		// my code
 		List<Integer> convIntList = new ArrayList<Integer>();
 
 		for (String x : dataLines)
