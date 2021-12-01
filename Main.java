@@ -34,7 +34,7 @@ class Main {
 		}
 		long start = System.nanoTime();
 
-		// my code
+		// part 1 solution
 		List<Integer> convIntList = new ArrayList<Integer>();
 
 		for (String x : dataLines)
@@ -49,7 +49,21 @@ class Main {
 				count++;
 		}
 
-		System.out.println(count);
+		System.out.println("Day 1 Star 1: " + count);
+
+		int pt2Count = 0;
+		// part 2 solution
+		for (int i = 0; i < convIntList.size() - 3; i++)
+		{
+			int sum1 = convIntList.get(i) + convIntList.get(i + 1) + convIntList.get(i + 2);
+			int sum2 = convIntList.get(i + 1) + convIntList.get(i + 2) + convIntList.get(i + 3);
+			if (sum1 < sum2)
+			{
+				pt2Count++;
+			}
+		}
+
+		System.out.println("Day 1 Star 2: " + pt2Count);
 
 		// Keep this line at the end of your code
 		long end = System.nanoTime();
