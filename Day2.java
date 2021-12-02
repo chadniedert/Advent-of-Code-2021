@@ -6,11 +6,11 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.util.*;
 
-public class Main 
+public class Day2
 {
 	public static void main(String[] args) 
 	{
-		Path filePath = Paths.get(/* insert as a String*/);
+		Path filePath = Paths.get("day2data.txt");
 		Charset charset = StandardCharsets.UTF_8;
 		List<String> dataLines = new ArrayList<String>();
 		try {
@@ -20,9 +20,7 @@ public class Main
 		}
 		long start = System.nanoTime();
 
-		/*
-		 * work here
-		 */
+		int
 
 	
 		// keep this line at the end of your code
