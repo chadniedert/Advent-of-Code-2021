@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.util.*;
 
-public class Main 
+public class /* Class Name */ 
 {
 	public static void main(String[] args) 
 	{
