@@ -25,7 +25,15 @@ public class Day3Star2
 
 		ArrayList<Integer> bit1Count = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0));
 		ArrayList<Integer> bit0Count = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0));
+		ArrayList<String> oxyGenList = new ArrayList<String>();
 
+		// Build oxyGenList from dataLines
+		for (String num : dataLines)
+		{
+			oxyGenList.add(num);
+		}
+
+		// Builds bit1Count and bit0Count
 		for (String num : dataLines)
 		{
 			for (int i = 0; i < num.length(); i++)
@@ -46,25 +54,98 @@ public class Day3Star2
 			}
 		}
 
-		for (int i = 0; i < bit1Count.size(); i++)
+		// remove index 0 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
 		{
-			if (bit1Count.get(i) > bit0Count.get(i))
+			if (oxyGenList.get(i).substring(0, 1).equals("0"))
 			{
-				gammaRate += "1";
-				epsilonRate += "0";
-			}
-			else
-			{
-				gammaRate += "0";
-				epsilonRate += "1";
+				oxyGenList.remove(i);
+				i--;
 			}
 		}
 
-		// Convert gammaRate and epsilonRate to decimals and multiply
-		int gammaRateInt = Integer.parseInt(gammaRate, 2);
-		int epsilonRateInt = Integer.parseInt(epsilonRate, 2);
+		// remove index 1 (0 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(1, 2).equals("1"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
 
-		powerCons = gammaRateInt * epsilonRateInt;
+		// remove index 2 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(2, 3).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 3 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(3, 4).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 4 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(4, 5).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 5 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(5, 6).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 6 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(6, 7).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 7 (1 most common)
+		for (int i = 0; i < oxyGenList.size(); i++)
+		{
+			if (oxyGenList.get(i).substring(7, 8).equals("0"))
+			{
+				oxyGenList.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 8 (1 most common)
+		oxyGenList.remove(0);
+	
+		
+
+		System.out.println("oxyGenList: " + oxyGenList);
+		
+		int oxyGenRating = Integer.parseInt(oxyGenList.get(0), 2);
+		System.out.println("oxyGenRating = " + oxyGenRating);
+		System.out.println("oxyGenList.size() = " + oxyGenList.size());
+
+	
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
