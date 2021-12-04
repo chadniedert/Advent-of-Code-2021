@@ -26,11 +26,13 @@ public class Day3Star2
 		ArrayList<Integer> bit1Count = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0));
 		ArrayList<Integer> bit0Count = new ArrayList<Integer>(Arrays.asList(0,0,0,0,0,0,0,0,0,0,0,0));
 		ArrayList<String> oxyGenList = new ArrayList<String>();
+		ArrayList<String> co2List = new ArrayList<String>();
 
-		// Build oxyGenList from dataLines
+		// Build oxyGenList, co2List from dataLines
 		for (String num : dataLines)
 		{
 			oxyGenList.add(num);
+			co2List.add(num);
 		}
 
 		// Builds bit1Count and bit0Count
@@ -54,222 +56,68 @@ public class Day3Star2
 			}
 		}
 
-		// remove index 0 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
+		// Removes appropriate values from oxyGenList, co2List
+		for (int i = 0; i < 12; i++)
 		{
-			if (oxyGenList.get(i).substring(0, 1).equals("0"))
+			if (bit1Count.get(i) >= bit0Count.get(i))
 			{
-				oxyGenList.remove(i);
-				i--;
+				for (int j = 0; j < oxyGenList.size(); j++)
+				{
+					if (oxyGenList.get(j).substring(i, i + 1).equals("0"))
+					{
+						if (oxyGenList.size() > 1)
+						{
+							oxyGenList.remove(j);
+							j--;
+						}
+					}
+				}
+				for (int l = 0; l < co2List.size(); l++)
+				{
+					if (co2List.get(l).substring(i, i + 1).equals("1"))
+					{
+						if (co2List.size() > 1)
+						{
+							co2List.remove(l);
+							l--;
+						}
+					}
+				}	
 			}
+			else
+			{
+				for (int k = 0; k < oxyGenList.size(); k++)
+				{
+					if (oxyGenList.get(k).substring(i, i + 1).equals("1"))
+					{
+						if (oxyGenList.size() > 1)
+						{
+							oxyGenList.remove(k);
+							k--;
+						}
+					}
+				}
+				for (int m = 0; m < co2List.size(); m++)
+				{
+					if (co2List.get(m).substring(i, i + 1).equals("0"))
+					{
+						if (co2List.size() > 1)
+						{
+							co2List.remove(m);
+							m--;
+						}
+					}
+				}
+			}
+			
 		}
 
-		// remove index 1 (0 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(1, 2).equals("1"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 2 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(2, 3).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 3 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(3, 4).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 4 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(4, 5).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 5 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(5, 6).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 6 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(6, 7).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 7 (1 most common)
-		for (int i = 0; i < oxyGenList.size(); i++)
-		{
-			if (oxyGenList.get(i).substring(7, 8).equals("0"))
-			{
-				oxyGenList.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 8 (1 most common)
-		oxyGenList.remove(0);
-
+		
 		System.out.println("oxyGenList: " + oxyGenList);
 		
 		int oxyGenRating = Integer.parseInt(oxyGenList.get(0), 2);
 		System.out.println("oxyGenRating = " + oxyGenRating);
 		System.out.println("oxyGenList.size() = " + oxyGenList.size());
-
-		ArrayList<String> co2List = new ArrayList<String>();
-
-		// Build co2List from dataLines
-		for (String num : dataLines)
-		{
-			co2List.add(num);
-		}
-
-		// remove index 0 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(0, 1).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 1 (1 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(1, 2).equals("0"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 2 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(2, 3).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 3 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(3, 4).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 4 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(4, 5).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 5 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(5, 6).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 6 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(6, 7).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 7 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(7, 8).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 8 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(8, 9).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 9 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(9, 10).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 10 (1 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(10, 11).equals("0"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
-
-		// remove index 11 (0 least common)
-		for (int i = 0; i < co2List.size(); i++)
-		{
-			if (co2List.get(i).substring(11, 12).equals("1"))
-			{
-				co2List.remove(i);
-				i--;
-			}
-		}
 
 		System.out.println("co2List: " + co2List);
 		
@@ -277,7 +125,7 @@ public class Day3Star2
 		System.out.println("co2Rating = " + co2Rating);
 		System.out.println("co2List.size() = " + co2List.size());
 
-		System.out.println()
+		System.out.println("generator rating: " + co2Rating * oxyGenRating);
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
