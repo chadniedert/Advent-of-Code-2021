@@ -136,8 +136,6 @@ public class Day3Star2
 
 		// remove index 8 (1 most common)
 		oxyGenList.remove(0);
-	
-		
 
 		System.out.println("oxyGenList: " + oxyGenList);
 		
@@ -145,7 +143,141 @@ public class Day3Star2
 		System.out.println("oxyGenRating = " + oxyGenRating);
 		System.out.println("oxyGenList.size() = " + oxyGenList.size());
 
-	
+		ArrayList<String> co2List = new ArrayList<String>();
+
+		// Build co2List from dataLines
+		for (String num : dataLines)
+		{
+			co2List.add(num);
+		}
+
+		// remove index 0 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(0, 1).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 1 (1 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(1, 2).equals("0"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 2 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(2, 3).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 3 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(3, 4).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 4 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(4, 5).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 5 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(5, 6).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 6 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(6, 7).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 7 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(7, 8).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 8 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(8, 9).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 9 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(9, 10).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 10 (1 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(10, 11).equals("0"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		// remove index 11 (0 least common)
+		for (int i = 0; i < co2List.size(); i++)
+		{
+			if (co2List.get(i).substring(11, 12).equals("1"))
+			{
+				co2List.remove(i);
+				i--;
+			}
+		}
+
+		System.out.println("co2List: " + co2List);
+		
+		int co2Rating = Integer.parseInt(co2List.get(0), 2);
+		System.out.println("co2Rating = " + co2Rating);
+		System.out.println("co2List.size() = " + co2List.size());
+
+		System.out.println()
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
