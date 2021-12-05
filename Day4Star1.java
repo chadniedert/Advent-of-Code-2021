@@ -23,7 +23,7 @@ public class Day4Star1
 		}
 		long start = System.nanoTime();
 
-		// Format numbersCalled
+		// Format numbersCalled and add 0 to all single digit numbers
 		ArrayList<String> numbersCalled = new ArrayList<String>();
 		int leftIndex = 0;
 		int rightIndex = dataLines.get(0).indexOf(",");
@@ -36,12 +36,61 @@ public class Day4Star1
 				rightIndex = dataLines.get(0).indexOf(",", leftIndex);
 			}
 		}
-		System.out.println(numbersCalled);
-		System.out.println("numbersCalled.size() = " + numbersCalled.size());
+		for (int i = 0; i < numbersCalled.size(); i++)
+		{
+			if (numbersCalled.get(i).length() == 1)
+			{
+				String temp = numbersCalled.get(i);
+				numbersCalled.set(i, "0" + temp);
+			}
+		}
+
+		// Separate each row of game board, removes blanks, adds 0 in front of any single digit number
+		ArrayList<String> separateRows = new ArrayList<String>();
+		for (int i = 0; i < dataLines2.size(); i++)
+		{
+			separateRows.add(dataLines2.get(i));
+		}
+		for (int i = 0; i < separateRows.size(); i++)
+		{
+			if (separateRows.get(i).equals(""))
+			{
+				separateRows.remove(i);
+				i--;
+			}
+		}
+		for (int i = 0; i < separateRows.size(); i++)
+		{
+			for (int j = 0; j < separateRows.get(i).length(); j += 3)
+			{
+				if (j == 0 && separateRows.get(i).substring(j, j + 1).equals(" "))
+				{
+					String back = separateRows.get(i).substring(j + 1, separateRows.get(i).length());
+					separateRows.set(i, "0" + back);
+				}
+				else if (separateRows.get(i).substring(j, j + 1).equals(" "))
+				{
+					String front = separateRows.get(i).substring(0, j);
+					String back = separateRows.get(i).substring(j + 1, separateRows.get(i).length());
+					separateRows.set(i, front + "0" + back);
+				}	
+			}
+		}
+
+		//System.out.println(separateRows);
+		//System.out.println("separateRows.size() = " + separateRows.size());
+		//System.out.println("separateRows.get(4) = " + separateRows.get(4));
+		//System.out.println("separateRows.get(5) = " + separateRows.get(5));
+		//System.out.println("separateRows.get(6) = " + separateRows.get(6));
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
 		long elapsedTime = end - start;
 		System.out.format("Elapsed time: %dns%n", elapsedTime);
+	}
+
+	public static void checkNumber(String in)
+	{
+		
 	}
 }
