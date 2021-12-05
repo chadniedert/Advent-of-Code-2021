@@ -23,9 +23,21 @@ public class Day4Star1
 		}
 		long start = System.nanoTime();
 
-		System.out.println(dataLines);
-		System.out.println(dataLines.size());
-		System.out.println(dataLines2);
+		// Format numbersCalled
+		ArrayList<String> numbersCalled = new ArrayList<String>();
+		int leftIndex = 0;
+		int rightIndex = dataLines.get(0).indexOf(",");
+		while (leftIndex < rightIndex)
+		{
+			numbersCalled.add(dataLines.get(0).substring(leftIndex, rightIndex));
+			leftIndex = rightIndex + 1;
+			if (leftIndex < dataLines.get(0).length())
+			{
+				rightIndex = dataLines.get(0).indexOf(",", leftIndex);
+			}
+		}
+		System.out.println(numbersCalled);
+		System.out.println("numbersCalled.size() = " + numbersCalled.size());
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
