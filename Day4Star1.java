@@ -83,14 +83,72 @@ public class Day4Star1
 		//System.out.println("separateRows.get(5) = " + separateRows.get(5));
 		//System.out.println("separateRows.get(6) = " + separateRows.get(6));
 
+		// Separate each board number to its own index
+		ArrayList<String> allOptions = new ArrayList<String>();
+		for (int i = 0; i < separateRows.size(); i++)
+		{
+			for (int j = 0; j < separateRows.get(i).length(); j++)
+			{
+				if (separateRows.get(i).substring(j, j + 1).equals(" "))
+				{
+					allOptions.add(separateRows.get(i).substring(j - 2, j));
+				}
+				else if (j == separateRows.get(i).length() - 1)
+				{
+					allOptions.add(separateRows.get(i).substring(j - 1, j + 1));
+				}
+			}
+		}
+
+		String lastNumCalled = "0";
+		boolean winnerFound = false;
+
+
 		// keep this line at the end of your code
 		long end = System.nanoTime();
 		long elapsedTime = end - start;
 		System.out.format("Elapsed time: %dns%n", elapsedTime);
 	}
 
-	public static void checkNumber(String in)
+	public static void newNumberDrawn(String initNum)
 	{
-		
+		lastNumCalled = initNum;
+		for (int i = 0; i < allOptions.size(); i++)
+		{
+			if (allOptions.get(i).equals(initNum))
+			{
+				newNum = "x" + initNum;
+				allOptions.set(i, newNum);
+			}
+		}
 	}
+
+	public static void checkRows()
+	{
+		for (int i = 0; i < allOptions.size(); i += 5)
+		{
+			if (allOptions.get(i).substring(0, 1).equals("x") && allOptions.get(i + 1).substring(0, 1).equals("x") && allOptions.get(i + 2).substring(0, 1).equals("x") && allOptions.get(i + 3).substring(0, 1).equals("x") && allOptions.get(i + 4).substring(0, 1).equals("x"))
+			{
+				winnerFound = true;
+				break;
+			}
+		}
+	}
+
+	public static void checkColumns()
+	{
+		for (int i = 0; i < allOptions.size(); i += 25)
+		{
+			for (int j = 0; j < 5; j++)
+			{
+				if (allOptions.get(i + j).substring(0, 1).equals("x") && allOptions.get(i + j + 5).substring(0, 1).equals("x") && allOptions.get(i + j + 10).substring(0, 1).equals("x") && allOptions.get(i + j + 15).substring(0, 1).equals("x") && allOptions.get(i + j + 20).substring(0, 1).equals("x"))
+				{
+					winnerFound = true;
+				}
+			}
+			if (winnerFound == true)
+				break;
+		}
+	}
+
 }
