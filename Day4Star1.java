@@ -101,8 +101,27 @@ public class Day4Star1
 		}
 
 		String lastNumCalled = "0";
-		boolean winnerFound = false;
+		int winnerFoundIndex = -1;
+		int checkingIndex = 0;
 
+		while (winnerFoundIndex == -1)
+		{
+			lastNumCalled = numbersCalled.get(checkingIndex);
+			newNumberDrawn(allOptions, lastNumCalled);
+			winnerFoundIndex = checkRows(allOptions);
+			if (winnerFoundIndex == -1)
+			{
+				winnerFoundIndex = checkColumns(allOptions);
+			}
+			checkingIndex++;
+		}
+
+		System.out.println(printWinningCard(allOptions, winnerFoundIndex));
+		System.out.println("lastNumCalled = " + lastNumCalled);
+		
+		int sum = 18+ 88 + 10 + 51+ 79 + 24+ 89 + 21 + 57+ 17 + 58+ 92+14+60;
+		int prod = sum * Integer.parseInt(lastNumCalled);
+		System.out.println("Answer: " + prod);
 
 		// keep this line at the end of your code
 		long end = System.nanoTime();
@@ -110,45 +129,49 @@ public class Day4Star1
 		System.out.format("Elapsed time: %dns%n", elapsedTime);
 	}
 
-	public static void newNumberDrawn(String initNum)
+	public static void newNumberDrawn(ArrayList<String> arr, String initNum)
 	{
-		lastNumCalled = initNum;
-		for (int i = 0; i < allOptions.size(); i++)
+		for (int i = 0; i < arr.size(); i++)
 		{
-			if (allOptions.get(i).equals(initNum))
+			if (arr.get(i).equals(initNum))
 			{
-				newNum = "x" + initNum;
-				allOptions.set(i, newNum);
+				String newNum = "x" + initNum;
+				arr.set(i, newNum);
 			}
 		}
 	}
 
-	public static void checkRows()
+	public static int checkRows(ArrayList<String> arr)
 	{
-		for (int i = 0; i < allOptions.size(); i += 5)
+		for (int i = 0; i < arr.size(); i += 5)
 		{
-			if (allOptions.get(i).substring(0, 1).equals("x") && allOptions.get(i + 1).substring(0, 1).equals("x") && allOptions.get(i + 2).substring(0, 1).equals("x") && allOptions.get(i + 3).substring(0, 1).equals("x") && allOptions.get(i + 4).substring(0, 1).equals("x"))
+			if (arr.get(i).substring(0, 1).equals("x") && arr.get(i + 1).substring(0, 1).equals("x") && arr.get(i + 2).substring(0, 1).equals("x") && arr.get(i + 3).substring(0, 1).equals("x") && arr.get(i + 4).substring(0, 1).equals("x"))
 			{
-				winnerFound = true;
-				break;
+				return i;
 			}
 		}
+		return -1;
 	}
 
-	public static void checkColumns()
+	public static int checkColumns(ArrayList<String> arr)
 	{
-		for (int i = 0; i < allOptions.size(); i += 25)
+		for (int i = 0; i < arr.size(); i += 25)
 		{
 			for (int j = 0; j < 5; j++)
 			{
-				if (allOptions.get(i + j).substring(0, 1).equals("x") && allOptions.get(i + j + 5).substring(0, 1).equals("x") && allOptions.get(i + j + 10).substring(0, 1).equals("x") && allOptions.get(i + j + 15).substring(0, 1).equals("x") && allOptions.get(i + j + 20).substring(0, 1).equals("x"))
+				if (arr.get(i + j).substring(0, 1).equals("x") && arr.get(i + j + 5).substring(0, 1).equals("x") && arr.get(i + j + 10).substring(0, 1).equals("x") && arr.get(i + j + 15).substring(0, 1).equals("x") && arr.get(i + j + 20).substring(0, 1).equals("x"))
 				{
-					winnerFound = true;
+					return i + j;
 				}
 			}
-			if (winnerFound == true)
-				break;
 		}
+		return -1;
+	}
+
+	public static String printWinningCard(ArrayList<String> arr, int initWFI)
+	{
+		int originIndex = initWFI - (initWFI % 25);
+		return arr.get(originIndex) + " " + arr.get(originIndex + 1) + " " + arr.get(originIndex + 2) + " "  + arr.get(originIndex + 3) + " "  + arr.get(originIndex + 4) + "\n"  + arr.get(originIndex + 5) + " "  + arr.get(originIndex+ 6) + " "  + arr.get(originIndex +7) + " "  + arr.get(originIndex +8) + " "  + arr.get(originIndex + 9) + "\n" + arr.get(originIndex + 10) + " " + arr.get(originIndex +11) + " " + arr.get(originIndex + 12) + " " + arr.get(originIndex +13) + " " + arr.get(originIndex +14) + "\n" + arr.get(originIndex +15) + " " + arr.get(originIndex +16) + " " + arr.get(originIndex +17) + " " + arr.get(originIndex +18) + " " + arr.get(originIndex + 19) + "\n" + arr.get(originIndex + 20) + " " + arr.get(originIndex + 21) + " " + arr.get(originIndex + 22) + " " + arr.get(originIndex + 23) + " " + arr.get(originIndex+ 24) + "\n originIndex = " + originIndex;
 	}
 
 }
