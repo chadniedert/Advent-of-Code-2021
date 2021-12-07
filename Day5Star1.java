@@ -38,7 +38,77 @@ public class Day5Star1
 			int d = Integer.parseInt(dataLines.get(i).substring(leftIndex, rightIndex));
 			Coordinates tempCoord = new Coordinates(a, b, c, d);
 			allCoords.add(tempCoord);
+		} // allCoords ArrayList is complete
+
+		// create game board
+		int[][] board = new int[1000][1000];
+		for (int i = 0; i < 1000; i++)
+		{
+			for (int j = 0; j < 1000; j++)
+			{
+				board[i][j] = 0;
+			}
+		} // game board complete
+
+		// checks for only vertical or horizontal movement
+		for (int i = 0; i < allCoords.size(); i++)
+		{
+			if (allCoords.get(i).getX1() == allCoords.get(i).getX2())
+			{
+				int row = allCoords.get(i).getX1();
+				if (allCoords.get(i).getY1() < allCoords.get(i).getY2())
+				{
+					for (int j = allCoords.get(i).getY1(); j <= allCoords.get(i).getY2(); j++)
+					{
+						int temp = board[row][j];
+						board[row][j] = temp + 1;
+					}
+				}
+				else
+				{
+					for (int j = allCoords.get(i).getY2(); j <= allCoords.get(i).getY1(); j++)
+					{
+						int temp = board[row][j];
+						board[row][j] = temp + 1;
+					}
+				}
+			}
+			else if (allCoords.get(i).getY1() == allCoords.get(i).getY2())
+			{
+				int col = allCoords.get(i).getY1();
+				if (allCoords.get(i).getX1() < allCoords.get(i).getX2())
+				{
+					for (int j = allCoords.get(i).getX1(); j <= allCoords.get(i).getX2(); j++)
+					{
+						int temp = board[j][col];
+						board[j][col] = temp + 1;
+					}
+				}
+				else
+				{
+					for (int j = allCoords.get(i).getX2(); j <= allCoords.get(i).getX1(); j++)
+					{
+						int temp = board[j][col];
+						board[j][col] = temp + 1;
+					}
+				}
+			}
 		}
+
+		// count intersections of 2 or more
+		int intCount = 0;
+		for (int i = 0; i < 1000; i++)
+		{
+			for (int j = 0; j < 1000; j++)
+			{
+				if (board[i][j] > 1)
+				{
+					intCount++;
+				}
+			}
+		}
+
+		System.out.println("intCount = " + intCount);
 	
 		// keep this line at the end of your code
 		long end = System.nanoTime();
