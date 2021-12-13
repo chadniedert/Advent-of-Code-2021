@@ -1,16 +1,39 @@
 import java.util.*;
 
-public class Day6
+public class Day6Star2
 {
 	public static void main(String[] args) 
 	{
 		long start = System.nanoTime();
 
 		ArrayList<Integer> numArr = new ArrayList<Integer>(Arrays.asList(3,1,4,2,1,1,1,1,1,1,1,4,1,4,1,2,1,1,2,1,3,4,5,1,1,4,1,3,3,1,1,1,1,3,3,1,3,3,1,5,5,1,1,3,1,1,2,1,1,1,3,1,4,3,2,1,4,3,3,1,1,1,1,5,1,4,1,1,1,4,1,4,4,1,5,1,1,4,5,1,1,2,1,1,1,4,1,2,1,1,1,1,1,1,5,1,3,1,1,4,4,1,1,5,1,2,1,1,1,1,5,1,3,1,1,1,2,2,1,4,1,3,1,4,1,2,1,1,1,1,1,3,2,5,4,4,1,3,2,1,4,1,3,1,1,1,2,1,1,5,1,2,1,1,1,2,1,4,3,1,1,1,4,1,1,1,1,1,2,2,1,1,5,1,1,3,1,2,5,5,1,4,1,1,1,1,1,2,1,1,1,1,4,5,1,1,1,1,1,1,1,1,1,3,4,4,1,1,4,1,3,4,1,5,4,2,5,1,2,1,1,1,1,1,1,4,3,2,1,1,3,2,5,2,5,5,1,3,1,2,1,1,1,1,1,1,1,1,1,3,1,1,1,3,1,4,1,4,2,1,3,4,1,1,1,2,3,1,1,1,4,1,2,5,1,2,1,5,1,1,2,1,2,1,1,1,1,4,3,4,1,5,5,4,1,1,5,2,1,3));
+	
+		//ArrayList<Integer> numArr = new ArrayList<Integer>(Arrays.asList(3,4,3,1,2));
 
-		int numDays = 256;
-		int count0 = 0;
+		int numDays = 80;
+		int lfCount = numArr.size();
+		
+		for (int i = 0; i < numArr.size(); i++)
+		{
+			ArrayList<Integer> tempArr = new ArrayList<Integer>(Arrays.asList(numArr.get(i)));
+			int dayCounter = 1;
+			while (dayCounter <= numDays)
+			{
+				for (int j = 0; j < tempArr.size(); j++)
+				{
+					tempArr.set(j, tempArr.get(j) - 1);
+					if (tempArr.get(j).equals(-1))
+					{
+						tempArr.add(9);
+						lfCount++;
+						tempArr.set(j,6);
+					}
+				}
+				dayCounter++;
+			}
+		}
 
+		/*
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArr.size(); j++)
@@ -29,10 +52,9 @@ public class Day6
 			}
 			//System.out.println(numArr);
 			System.out.println("Check complete for day = " + i);
-		}
+		}*/
 
-		//System.out.println(numArr);
-		System.out.println("numArr.size() >>> " + numArr.size());
+		System.out.println("lfCount = " + lfCount);
 		
 		// keep this line at the end of your code
 		long end = System.nanoTime();
