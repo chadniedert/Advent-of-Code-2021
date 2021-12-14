@@ -14,17 +14,11 @@ public class Day6Star2
 		// when value starts at 1
 		ArrayList<Integer> numArrStart1 = new ArrayList<Integer>(Arrays.asList(1));
 		int numDays = 18;
-		//int count0 = 0;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart1.size(); j++)
 			{
-				//count0 = 0;
 				numArrStart1.set(j, numArrStart1.get(j) - 1);
-				/*if (numArrStart1.get(j).equals(0))
-				{
-					count0++;
-				}*/
 				if (numArrStart1.get(j).equals(-1))
 				{
 					numArrStart1.add(9);
@@ -36,17 +30,11 @@ public class Day6Star2
 		// when value starts at 2
 		ArrayList<Integer> numArrStart2 = new ArrayList<Integer>(Arrays.asList(2));
 		numDays = 18;
-		//count0 = 0;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart2.size(); j++)
 			{
-				//count0 = 0;
 				numArrStart2.set(j, numArrStart2.get(j) - 1);
-				/*if (numArrStart2.get(j).equals(0))
-				{
-					count0++;
-				}*/
 				if (numArrStart2.get(j).equals(-1))
 				{
 					numArrStart2.add(9);
@@ -58,17 +46,11 @@ public class Day6Star2
 		// when value starts at 3
 		ArrayList<Integer> numArrStart3 = new ArrayList<Integer>(Arrays.asList(3));
 		numDays = 18;
-		//count0 = 0;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart3.size(); j++)
 			{
-				//count0 = 0;
 				numArrStart3.set(j, numArrStart3.get(j) - 1);
-				/*if (numArrStart3.get(j).equals(0))
-				{
-					count0++;
-				}*/
 				if (numArrStart3.get(j).equals(-1))
 				{
 					numArrStart3.add(9);
@@ -80,17 +62,11 @@ public class Day6Star2
 		// when value starts at 4
 		ArrayList<Integer> numArrStart4 = new ArrayList<Integer>(Arrays.asList(4));
 		numDays = 18;
-		//count0 = 0;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart4.size(); j++)
 			{
-				//count0 = 0;
 				numArrStart4.set(j, numArrStart4.get(j) - 1);
-				/*if (numArrStart4.get(j).equals(0))
-				{
-					count0++;
-				}*/
 				if (numArrStart4.get(j).equals(-1))
 				{
 					numArrStart4.add(9);
@@ -102,17 +78,11 @@ public class Day6Star2
 		// when value starts at 5
 		ArrayList<Integer> numArrStart5 = new ArrayList<Integer>(Arrays.asList(5));
 		numDays = 18;
-		//count0 = 0;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart5.size(); j++)
 			{
-				//count0 = 0;
 				numArrStart5.set(j, numArrStart5.get(j) - 1);
-				/*if (numArrStart5.get(j).equals(0))
-				{
-					count0++;
-				}*/
 				if (numArrStart5.get(j).equals(-1))
 				{
 					numArrStart5.add(9);
