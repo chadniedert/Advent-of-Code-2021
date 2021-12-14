@@ -29,7 +29,6 @@ public class Day6Star2
 
 		// when value starts at 2
 		ArrayList<Integer> numArrStart2 = new ArrayList<Integer>(Arrays.asList(2));
-		numDays = 18;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart2.size(); j++)
@@ -45,7 +44,6 @@ public class Day6Star2
 
 		// when value starts at 3
 		ArrayList<Integer> numArrStart3 = new ArrayList<Integer>(Arrays.asList(3));
-		numDays = 18;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart3.size(); j++)
@@ -61,7 +59,6 @@ public class Day6Star2
 
 		// when value starts at 4
 		ArrayList<Integer> numArrStart4 = new ArrayList<Integer>(Arrays.asList(4));
-		numDays = 18;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart4.size(); j++)
@@ -77,7 +74,6 @@ public class Day6Star2
 
 		// when value starts at 5
 		ArrayList<Integer> numArrStart5 = new ArrayList<Integer>(Arrays.asList(5));
-		numDays = 18;
 		for (int i = 1; i <= numDays; i++)
 		{
 			for (int j = 0; j < numArrStart5.size(); j++)
