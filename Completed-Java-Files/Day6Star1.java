@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Day6Star2
+public class Day6Star1
 {
 	public static void main(String[] args) 
 	{
